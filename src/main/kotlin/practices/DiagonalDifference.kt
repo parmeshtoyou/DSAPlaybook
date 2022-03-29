@@ -26,8 +26,3 @@ class DiagonalDifference {
         return abs(leftToRight - rightToLeft)
     }
 }
-
-fun main() {
-    val array: Array<IntArray> = arrayOf(intArrayOf(1, 2, 3), intArrayOf(4, 5, 6), intArrayOf(9, 8, 9))
-    println(DiagonalDifference().solution(array))
-}

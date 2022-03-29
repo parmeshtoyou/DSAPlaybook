@@ -5,8 +5,8 @@ class CountOdds {
     // Approach 1: Time Complexity is N where N is the number of Items withing the range
     fun countOdds1(low: Int, high: Int): Int {
         var count = 0
-        for(i in low .. high) {
-            if(i%2 != 0) count++
+        for (i in low..high) {
+            if (i % 2 != 0) count++
         }
         return count
     }
