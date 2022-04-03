@@ -12,6 +12,19 @@ class MyLinkedList {
         first = newNode
     }
 
+    fun insertLast(value: Int) {
+        val endNode = Node(value)
+        if (isEmpty()) {
+            insertFirst(value)
+            return
+        }
+        var n = first!!
+        while (n.next != null){
+            n = n.next!!
+        }
+        n.next = endNode
+    }
+
     fun deleteFirst(): Node? {
         val temp = first
         first = first?.next
@@ -20,6 +33,7 @@ class MyLinkedList {
 
     fun displayList() {
         var current = first
+        print("HEAD-->")
         while (current != null) {
             print("${current.value}-->")
             current = current.next
@@ -39,42 +53,25 @@ class MyLinkedList {
         return current
     }
 
-    fun delete(key: Int): Node? {
-        var current = first
-        var previous = first
+    fun delete(data: Int): Node? {
+        var copyOfHead = first
+        if (copyOfHead != null && copyOfHead.value == data) {
+            first = first!!.next
+            return first
+        }
 
-        while (current?.value != key) {
-            if (current?.next == null) {
-                return null
-            } else {
-                previous = current
-                current = current.next
+        while (copyOfHead!!.next != null) {
+            if (copyOfHead.next!!.value == data) {
+                copyOfHead.next = copyOfHead.next!!.next
+                return first
             }
+            copyOfHead = copyOfHead.next
         }
-        if (current == first) { // found node at first
-            first = first?.next
-        } else {
-            previous?.next = current.next
-        }
-        return current
+        return null
     }
-
 }
 
 fun main() {
-//    val myLinkedList = MyLinkedList()
-//    myLinkedList.addAtHead(1)
-//    myLinkedList.addAtTail(3)
-//    myLinkedList.addAtIndex(1, 2) // linked list becomes 1->2->3
-//    myLinkedList.addAtIndex(2, 22) // linked list becomes 1->2->3
-//    myLinkedList.addAtTail(4)
-//    myLinkedList.print()
-//
-//    val valueOfIndex = myLinkedList.get(1) // return 2
-//    println(valueOfIndex)
-//    myLinkedList.deleteAtIndex(1) // now the linked list is 1->3
-//    myLinkedList.print()
-
     val myLinkedList = MyLinkedList()
     myLinkedList.insertFirst(10)
     myLinkedList.insertFirst(20)
@@ -89,18 +86,17 @@ fun main() {
     val found = myLinkedList.find(50)
     found?.displayNode()
 
-    val delete = myLinkedList.delete(40)
-    delete?.displayNode()
+    myLinkedList.displayList()
 
     myLinkedList.displayList()
 
-
-    println("Deleted...")
-    while (myLinkedList.isEmpty().not()) {
-        val removedItem = myLinkedList.deleteFirst()
-        print("${removedItem?.value} ")
-    }
-
-    println()
+    myLinkedList.insertLast(80)
     myLinkedList.displayList()
+
+    myLinkedList.delete(50)
+    myLinkedList.displayList()
+
+    myLinkedList.deleteFirst()
+    myLinkedList.displayList()
+
 }
