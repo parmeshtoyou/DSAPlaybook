@@ -5,48 +5,63 @@ package sorting
 //merge both the half
 
 fun main() {
-    val arrayA = intArrayOf(23, 47, 81, 95)
-    val arrayB = intArrayOf(7, 14, 39, 55, 63, 74)
+    val input = intArrayOf(23, 47, 81, -1, 95, 7, 14, 39, 55, 63, 74)
+    val temp = IntArray(input.size) { -1 }
 
-    val arrayC = merge(arrayA, arrayB)
+    println("before sorting")
+    for (i in input) {
+        println(i)
+    }
 
-    for(element in arrayC) {
-        println(element)
+    mergeSort(input, temp)
+    println("after sorting")
+    for (i in input) {
+        println(i)
     }
 }
 
-fun merge(arrayA: IntArray, arrayB: IntArray) : IntArray {
-    val arrayC = IntArray(arrayA.size + arrayB.size) { Int.MIN_VALUE }
-    var indexA = 0
-    var indexB = 0
-    var indexC = 0
+fun mergeSort(input: IntArray, temp: IntArray) {
+    val start = 0
+    val end = input.size - 1
+    mergeSortRec(input, temp, start, end)
+}
 
-    // compare item from array A with array B and put smaller item into array C
-    while(indexA < arrayA.size && indexB < arrayB.size) {
-        if(arrayA[indexA] < arrayB[indexB]) {
-            arrayC[indexC] = arrayA[indexA]
-            indexC++
-            indexA++
+fun mergeSortRec(input: IntArray, temp: IntArray, lowerBound: Int, upperBound: Int) {
+
+    if (lowerBound == upperBound) {
+        return
+    }
+    val mid = lowerBound + (upperBound - lowerBound) / 2
+
+    mergeSortRec(input, temp, lowerBound, mid)
+    mergeSortRec(input, temp, mid + 1, upperBound)
+    merge(input, temp, lowerBound, mid + 1, upperBound)
+}
+
+fun merge(input: IntArray, temp: IntArray, start: Int, middle: Int, upperBound: Int) {
+    var j = 0
+    val mid = middle - 1
+    var highPtr = middle
+    var lowPtr = start
+    val size = upperBound - start + 1
+
+    while (lowPtr <= mid && highPtr <= upperBound) {
+        if (input[lowPtr] < input[highPtr]) {
+            temp[j++] = input[lowPtr++]
         } else {
-            arrayC[indexC] = arrayB[indexB]
-            indexC++
-            indexB++
+            temp[j++] = input[highPtr++]
         }
     }
 
-    // move all remaining item into array C, if there are any
-    while(indexA < arrayA.size) {
-        arrayC[indexC] = arrayA[indexA]
-        indexA++
-        indexC++
+    while (lowPtr <= mid) {
+        temp[j++] = input[lowPtr++]
     }
 
-    // move all remaining item into array C, if there are any
-    while(indexB < arrayB.size) {
-        arrayC[indexC] = arrayB[indexB]
-        indexB++
-        indexC++
+    while (highPtr <= upperBound) {
+        temp[j++] = input[highPtr++]
     }
 
-    return arrayC
+    for (k in 0 until size) {
+        input[start + k] = temp[k]
+    }
 }

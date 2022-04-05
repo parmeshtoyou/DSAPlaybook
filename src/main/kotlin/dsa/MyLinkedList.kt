@@ -4,7 +4,7 @@ package dsa
 class MyLinkedList {
     var first: Node? = null
 
-    fun isEmpty() = first == null
+    private fun isEmpty() = first == null
 
     fun insertFirst(value: Int) {
         val newNode = Node(value)
@@ -31,8 +31,10 @@ class MyLinkedList {
         return temp
     }
 
-    fun displayList() {
-        var current = first
+    fun getHead() = first
+
+    fun displayList(head: Node?) {
+        var current = head
         print("HEAD-->")
         while (current != null) {
             print("${current.value}-->")
@@ -69,6 +71,17 @@ class MyLinkedList {
         }
         return null
     }
+
+    fun reverse(): Node? {
+        var prev: Node? = null
+        while (first != null) {
+            val nextNode = first!!.next
+            first?.next = prev
+            prev = first
+            first = nextNode
+        }
+        return prev
+    }
 }
 
 fun main() {
@@ -81,22 +94,26 @@ fun main() {
     myLinkedList.insertFirst(60)
     myLinkedList.insertFirst(70)
 
-    myLinkedList.displayList()
+    myLinkedList.displayList(myLinkedList.getHead())
 
     val found = myLinkedList.find(50)
     found?.displayNode()
 
-    myLinkedList.displayList()
+    myLinkedList.displayList(myLinkedList.getHead())
 
-    myLinkedList.displayList()
+    myLinkedList.displayList(myLinkedList.getHead())
 
     myLinkedList.insertLast(80)
-    myLinkedList.displayList()
+    myLinkedList.displayList(myLinkedList.getHead())
 
     myLinkedList.delete(50)
-    myLinkedList.displayList()
+    myLinkedList.displayList(myLinkedList.getHead())
 
     myLinkedList.deleteFirst()
-    myLinkedList.displayList()
+    myLinkedList.displayList(myLinkedList.getHead())
+
+    println("reversed linked list")
+    val newHead = myLinkedList.reverse()
+    myLinkedList.displayList(newHead)
 
 }
