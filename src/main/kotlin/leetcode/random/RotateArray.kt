@@ -1,4 +1,4 @@
-package leetcode
+package leetcode.random
 
 class RotateArray {
     fun rotateArray(intArray: IntArray, k: Int): IntArray {

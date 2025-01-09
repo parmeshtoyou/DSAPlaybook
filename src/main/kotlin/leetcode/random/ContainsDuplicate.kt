@@ -1,4 +1,4 @@
-package leetcode
+package leetcode.random
 
 fun containsDuplicate(nums: IntArray): Boolean {
     val numSet = HashSet<Int>()

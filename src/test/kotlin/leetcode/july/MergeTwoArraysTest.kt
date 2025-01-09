@@ -1,5 +1,6 @@
 package leetcode.july
 
+import leetcode.year2024.july.MergeTwoArrays
 import org.junit.Assert
 import org.junit.Assert.assertArrayEquals
 import org.junit.Test

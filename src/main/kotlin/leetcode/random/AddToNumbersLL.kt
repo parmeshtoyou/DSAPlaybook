@@ -1,4 +1,4 @@
-package leetcode
+package leetcode.random
 
 import dsa.Node
 

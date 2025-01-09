@@ -1,4 +1,4 @@
-package leetcode
+package leetcode.random
 
 //https://leetcode.com/problems/longest-common-prefix/
 class LongestCommonPrefix {

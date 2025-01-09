@@ -1,4 +1,4 @@
-package leetcode.aug
+package leetcode.year2024.aug
 
 fun main() {
     reverse("Parmesh")

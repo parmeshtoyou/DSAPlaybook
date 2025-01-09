@@ -1,5 +1,6 @@
 package leetcode.july
 
+import leetcode.year2024.july.MinimumSizeSubArraySum
 import org.junit.Assert
 import org.junit.Test
 

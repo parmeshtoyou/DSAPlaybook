@@ -1,4 +1,4 @@
-package leetcode
+package leetcode.random
 
 fun missingNumber(nums: IntArray): Int {
     val n = nums.size

@@ -1,5 +1,6 @@
 package leetcode.july
 
+import leetcode.year2024.july.MaxArea
 import org.junit.Test
 
 import org.junit.Assert.*

@@ -2,6 +2,7 @@ package leetcode
 
 
 import junit.framework.TestCase.assertEquals
+import leetcode.random.LongestCommonPrefix
 import org.junit.Test
 
 class LongestCommonPrefixTest {

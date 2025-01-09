@@ -8,7 +8,7 @@ class NumberOf1sBitTest {
 
     @Test
     fun hammingWeight() {
-        val result = hammingWeight(15)
+        val result = leetcode.random.hammingWeight(15)
         assertEquals(4, result)
     }
 }

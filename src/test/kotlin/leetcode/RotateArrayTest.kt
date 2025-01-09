@@ -1,5 +1,6 @@
 package leetcode
 
+import leetcode.random.RotateArray
 import org.junit.Test
 
 import org.junit.Assert.*

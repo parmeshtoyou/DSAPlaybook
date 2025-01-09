@@ -1,4 +1,4 @@
-package leetcode
+package leetcode.random
 
 fun hammingWeight(n: Int): Int {
 

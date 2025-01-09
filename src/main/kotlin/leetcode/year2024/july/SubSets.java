@@ -1,4 +1,4 @@
-package leetcode.july;
+package leetcode.year2024.july;
 
 import java.util.ArrayList;
 import java.util.List;

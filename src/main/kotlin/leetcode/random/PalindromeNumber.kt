@@ -1,4 +1,4 @@
-package leetcode
+package leetcode.random
 
 //https://leetcode.com/problems/palindrome-number/
 class PalindromeNumber {

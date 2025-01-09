@@ -1,4 +1,4 @@
-package leetcode.july
+package leetcode.year2024.july
 
 class MinimumSizeSubArraySum {
     fun minSubArrayLen(target: Int, nums: IntArray): Int {
